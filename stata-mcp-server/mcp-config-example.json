@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "stata": {
+      "command": "node",
+      "args": [
+        "/path/to/stata-mcp-server/dist/index.js",
+        "/path/to/your/stata/projects",
+        "/another/stata/directory"
+      ],
+      "env": {}
+    }
+  }
+} 

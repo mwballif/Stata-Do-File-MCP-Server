@@ -1,0 +1,83 @@
+{
+  "dxt_version": "0.1",
+  "name": "stata-mcp-server",
+  "display_name": "Stata MCP Server",
+  "version": "0.1.0",
+  "description": "A Model Context Protocol server for managing Stata .do files",
+  "long_description": "This extension provides Claude with the ability to read, write, edit, and search Stata .do files within specified directories. It includes tools for file management, content editing, and project organization specifically designed for Stata workflows.\n\nFeatures include:\n- Read and write Stata .do files\n- Edit files with text replacements and dry-run preview\n- List and search for .do files using patterns\n- Get detailed file information including line counts and content analysis\n- Secure directory-based access control",
+  "author": {
+    "name": "Stata MCP Server",
+    "email": "support@example.com",
+    "url": "https://github.com/modelcontextprotocol/servers"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/modelcontextprotocol/servers"
+  },
+  "homepage": "https://modelcontextprotocol.io",
+  "documentation": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "support": "https://github.com/modelcontextprotocol/servers/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/dist/index.js",
+        "${HOME}/Documents/stata-projects"
+      ],
+      "env": {}
+    }
+  },
+  "tools": [
+    {
+      "name": "read_stata_file",
+      "description": "Read a Stata .do file and return its contents"
+    },
+    {
+      "name": "write_stata_file",
+      "description": "Write content to a Stata .do file"
+    },
+    {
+      "name": "edit_stata_file",
+      "description": "Edit a Stata .do file by applying text replacements"
+    },
+    {
+      "name": "list_stata_files",
+      "description": "List all Stata .do files in a directory"
+    },
+    {
+      "name": "create_stata_file",
+      "description": "Create a new Stata .do file"
+    },
+    {
+      "name": "search_stata_files",
+      "description": "Search for Stata .do files using patterns"
+    },
+    {
+      "name": "get_stata_file_info",
+      "description": "Get detailed information about a Stata .do file"
+    }
+  ],
+  "tools_generated": true,
+  "keywords": ["stata", "statistics", "data-analysis", "research", "filesystem"],
+  "license": "MIT",
+  "compatibility": {
+    "claude_desktop": ">=0.12.0",
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=16.0.0"
+    }
+  },
+  "user_config": {
+    "stata_directories": {
+      "type": "directory",
+      "title": "Stata Project Directories",
+      "description": "Directories containing your Stata .do files that the server can access",
+      "multiple": true,
+      "required": true,
+      "default": ["${HOME}/Documents/stata-projects"]
+    }
+  }
+} 
